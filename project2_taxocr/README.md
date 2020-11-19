@@ -1,0 +1,2 @@
+# `cd taxocr`
+# `npm start`
