@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "KPMG-extralight";
+    src: url("../../components/fonts/KPMG-Extralight\ 151009.ttf") format('truetype');
+}
+@font-face {
+    font-family: "KPMG-univers";
+    src: url("../../components/fonts/UniversforKPMG-Black.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "korean";
+    src: url("../../components/fonts/H2GTRE.TTF") format('truetype');
+}
+/* 
+
+#people-row{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+#profile-img-div-left{
+    margin-bottom: 50px;
+    position: 'relative';
+    text-align: left;
+}
+#profile-img-div-right{
+    margin-bottom: 50px;
+    position: 'relative';
+    text-align: right;
+}
+#profile-text-left{
+    position: absolute;
+    top: 50px;
+    left: 30%;
+    text-align: right;  
+    font-family: KPMG-univers-regular;
+}
+
+#profile-text-left > p{
+    color: #a4a4a4;
+    border-bottom: 1px solid white;
+}
+
+#profile-text-right{
+    position: absolute;
+    top: 50px;
+    right: 30%;
+    text-align: left;  
+}
+#profile-text-right > p{
+    color: #a4a4a4;
+    border-bottom: 1px solid white;
+}
+
+
+#profile-img{
+    width: 40%;
+}
+
+#people-row h1{
+    color: white;
+    font-size: 6vw;
+    font-style: italic;
+    font-family: KPMG-extralight;
+} */

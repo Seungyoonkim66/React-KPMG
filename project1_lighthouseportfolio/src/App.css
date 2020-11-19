@@ -1,0 +1,85 @@
+/* @font-face {
+    font-family: "KPMG-univers-regular";
+    src: url("./components/fonts/UVCL____.TTF") format('truetype');
+} */
+@font-face {
+    font-family: "KPMG-extralight";
+    src: url("./components/fonts/KPMG-Extralight\ 151009.ttf") format('truetype');
+}
+@font-face {
+    font-family: "f";
+    src: url("./components/fonts/UniversforKPMG-Cond.ttf") format('truetype');
+}
+/* @font-face {
+    font-family: "KPMG-univers";
+    src: url("./components/fonts/UniversforKPMG-Black.ttf") format('truetype');
+} */
+
+
+.App{
+    background-color: #00338d;
+    height: 100%;
+}
+
+#header-logo{
+    width: 7vw;
+    float: left;
+    margin-left: 30px;
+}
+#header-logo:hover{
+    width: 7.5vw;
+    float: left;
+}
+
+#home-li:hover{
+    font-size: 80px;
+    transition-duration: 0.5s;
+}
+
+.home-header{
+    width: 100%;
+    background-color: #00338d;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#header-nav{
+    font-family: f;
+}
+
+#search-bar{
+    width:70px;
+    height: 35px;
+    transition-duration: 3s;
+}
+#search-bar:hover{
+    width:130px;
+    height: 35px;
+    transition-duration: 3s;
+}
+
+@media(max-width: 1400px){
+    #home-body-name{
+        display: none;
+    }
+}
+
+@media(max-width: 1102px){
+    #project-card-row{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 750px){
+    #header-nav{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+
+

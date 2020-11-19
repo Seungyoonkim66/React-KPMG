@@ -1,0 +1,213 @@
+
+@font-face {
+    font-family: "KPMG-univers";
+    src: url("../../components/fonts/UniversforKPMG-Light.ttf") format('truetype');
+}
+@font-face {
+    font-family: "f";
+    src: url("../../components/fonts/UniversforKPMG-Cond.ttf") format('truetype');
+}
+@font-face {
+    font-family: "KPMG-extralight";
+    src: url("../../components/fonts/KPMG-Extralight\ 151009.ttf") format('truetype');
+}
+@font-face {
+    font-family: "f2";
+    src: url("../../components/fonts/UVCL____.TTF") format('truetype');
+}
+
+.about{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.p-emp1{
+    display: inline;
+    color: #0091da;
+    font-weight: bold;
+}
+.p-emp2{
+    display: inline;
+    color: rgb(109,27,122);
+    font-weight: bold;
+}
+.p-title{
+    font-size: 3.5vw;
+    font-family: KPMG-extralight;
+}
+
+
+
+#main-txt-title{
+    font-family: KPMG-extralight;
+    font-size: 4vw;
+    margin-top: 15%;
+    margin-left: 10px;
+    padding: 0 15px;
+    background-color: #00338d;
+    color: white;
+    width: 100%; 
+}
+#main-img{
+    width: 100%;
+}
+#main-txt-content{
+    font-family: f2;
+    width: 90%;
+    font-size: 2vw;
+    margin-left: 15px;
+}
+
+#wiki-card{
+    border-radius: 0;
+    border: none;
+}
+#wiki-img{
+    border-radius: 0;
+}
+#wiki-overlay{
+    text-align: center;
+}
+#wiki-overlay:hover{
+    color: white; 
+    background-color: #00338d;
+    opacity: 0.5;
+}
+#wiki-txt{
+    font-family: KPMG-extralight;
+    font-size: 4vw;
+    color: white;
+}
+
+#strategy-content-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#strategy-content-each{
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+#strategy-content-each:hover{
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+    background-color: white;
+}
+#strategy-content-img{
+    width: 10%;
+}
+#strategy-content-title{
+    font-weight: 600;
+    padding-top: 15px;
+    font-size: 1.8vw;
+    font-family: f2;
+}
+
+
+#solutions{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    font-family: f2;
+}
+#solution-each{
+    width: 50%;
+    border: none;
+    color: white;
+    border-radius: 0;
+}
+#solution-img{
+    border-radius: 0;
+    background-color: #00338d;
+    height: 100%;
+}
+
+#solution-txt{
+    margin-top: 50%;
+    text-align: left;
+    background-color: black;
+    opacity: 0.5;
+    overflow: hidden;
+    color: white;
+    width: 100%;
+    transition-duration: 1s;
+    border-radius: 0;
+}
+#solution-txt:hover{
+    margin-top: 0%;
+    text-align: left;
+    background-color: black;
+    opacity: 0.8;
+    overflow: auto;
+    width: 100%;
+    transition-duration: 1s;
+    color: white;
+}
+
+
+
+#obj-roadmap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+#obj{
+    width: 100%;
+    padding: 20px;
+}
+#obj-title{
+    font-weight: 00;
+    font-size: 1.7vw;
+    color: #00338d;
+    border-bottom: 2px solid #00338d;
+    width: 95%;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    font-family: f2;
+}
+#obj-content{
+    padding-left: 10px;
+    margin-bottom: 3px;
+    font-weight: 600;
+}
+#obj-content-2{
+    padding-left: 55px;
+    font-size: smaller;
+    width: 90%;
+}
+
+
+#roadmap{
+    width: 100%;
+    padding: 20px;
+}
+#roadmap-div-title{
+    font-weight: 500;
+    font-size: 1.7vw;
+    color: #00338d;
+    border-bottom: 2px solid #00338d;
+    width: 95%;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-family: f2;
+}
+#roadmap-title{
+    font-weight: 600;
+    padding-left: 20px;
+    margin: 0;
+    /* color: #00338d; */
+}
+#roadmap-content{
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+#roadmap-txt{
+    width:100%;
+    font-size: 12px;
+    padding-left: 30px;
+}
