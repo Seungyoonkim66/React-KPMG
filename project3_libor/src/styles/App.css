@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans+Condensed:wght@300&display=swap');
+
+
+.App{
+    font-family: 'Bebas Neue', cursive;
+}
+#btn-upload:hover{
+    border-radius: 4px;
+    background-color: #33334c;
+}
+#p-intro{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
