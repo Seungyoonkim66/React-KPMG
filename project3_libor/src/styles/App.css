@@ -11,4 +11,10 @@
 #p-intro{
     font-family: 'Open Sans Condensed', sans-serif;
 }
-
+#doc_info_table{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+#doc_info_table_each_row{
+    border-bottom: 1px solid #33334c;
+    padding: 0 3%;
+}

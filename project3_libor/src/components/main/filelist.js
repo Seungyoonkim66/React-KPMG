@@ -1,11 +1,19 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-// import Divider from '@material-ui/core/Divider';
-
 import Box from '@material-ui/core/Box';
+import Files from '../../static/files.json';
+
+const fileList = Files.map((file) => 
+    <Link key={file.id} style={{ textDecoration: 'none', color: 'black' }} to={file.link}>
+        <ListItem button>
+            <ListItemText primary={file.name}/>
+        </ListItem>
+    </Link>
+);
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
-}
 
 export default function FileList() {
     const classes = useStyles();
@@ -27,12 +32,7 @@ export default function FileList() {
         <div className={classes.root}>
             <Box bgcolor="primary.main" height={535}>
                 <List component="nav">
-                    <ListItem button>
-                        <ListItemText primary="File" />
-                    </ListItem>
-                    <ListItemLink href="#simple-list">
-                        <ListItemText primary="File" />
-                    </ListItemLink>
+                    {fileList}
                 </List>
             </Box>
         </div>

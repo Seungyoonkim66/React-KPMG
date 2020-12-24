@@ -18,26 +18,27 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import PopUp from './popup';
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+function createRow( rowID, documentName, documentID, resultKey, resultValue, resultValueExtracted, igniteElementID, isModified, annotationID) {
+    return { rowID, documentName, documentID, resultKey, resultValue, resultValueExtracted, igniteElementID, isModified, annotationID };
 }
 
 const rows = [
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Donut', 452, 25.0, 51, 4.9),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Honeycomb', 408, 3.2, 87, 6.5),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Jelly Bean', 375, 0.0, 94, 0.0),
-    createData('KitKat', 518, 26.0, 65, 7.0),
-    createData('Lollipop', 392, 0.2, 98, 0.0),
-    createData('Marshmallow', 318, 0, 81, 2.0),
-    createData('Nougat', 360, 19.0, 9, 37.0),
-    createData('Oreo', 437, 18.0, 63, 4.0),
+    createRow('0', 'file1.pdf', '1', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+    createRow('1', 'file1.pdf', '1', 'Q2', 'A2', 'A2', '1', 'true', '2'),
+    createRow('2', 'file1.pdf', '1', 'Q3', 'A3', 'A3', '1', 'true', '3'),
+
+    createRow('3', 'file2.pdf', '2', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+    createRow('4', 'file2.pdf', '2', 'Q2', 'A2', 'A2', '1', 'true', '2'),
+
+    createRow('5', 'file3.pdf', '3', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+
+    createRow('6', 'file4.pdf', '1', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+    createRow('7', 'file4.pdf', '1', 'Q2', 'A2', 'A2', '1', 'true', '2'),
+    createRow('8', 'file4.pdf', '1', 'Q3', 'A3', 'A3', '1', 'true', '3'),
+
+    createRow('9', 'file5.pdf', '5', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -67,11 +68,14 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-    { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-    { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-    { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-    { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+    { id: 'documentName', numeric: false, label: 'documentName' },
+    { id: 'documentID', numeric: false, label: 'documentID' },
+    { id: 'resultKey', numeric: false, label: 'resultKey' },
+    { id: 'resultValue', numeric: false, label: 'resultValue' },
+    { id: 'resultValueExtracted', numeric: false, label: 'resultValueExtracted' },
+    { id: 'igniteElementID', numeric: false, label: 'igniteElementID' },
+    { id: 'disModified', numeric: false, label: 'isModified' },
+    { id: 'annotationID', numeric: false, label: 'annotationID' },
 ];
 
 function EnhancedTableHead(props) {
@@ -163,7 +167,7 @@ const EnhancedTableToolbar = (props) => {
                 </Typography>
             ) : (
                     <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                        table subtitle 
+                        table subtitle
                     </Typography>
                 )}
 
@@ -199,7 +203,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
     },
     table: {
-        minWidth: 750,
+        // minWidth: 750,
     },
     visuallyHidden: {
         border: 0,
@@ -231,7 +235,7 @@ export default function EnhancedTable() {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelecteds = rows.map((n) => n.name);
+            const newSelecteds = rows.map((n) => n.rowID);
             setSelected(newSelecteds);
             return;
         }
@@ -278,10 +282,6 @@ export default function EnhancedTable() {
 
     return (
         <div className={classes.root}>
-            <div style={{textAlign:'left', padding:'5% 2%', fontSize:'3rem', display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
-                Table Title
-                <PopUp btnTitle="how to use" />
-            </div>
             <Paper className={classes.paper}>
                 <EnhancedTableToolbar numSelected={selected.length} />
                 <TableContainer>
@@ -304,17 +304,17 @@ export default function EnhancedTable() {
                             {stableSort(rows, getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
-                                    const isItemSelected = isSelected(row.name);
+                                    const isItemSelected = isSelected(row.rowID);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.name)}
+                                            onClick={(event) => handleClick(event, row.rowID)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={row.name}
+                                            key={row.rowID}
                                             selected={isItemSelected}
                                         >
                                             <TableCell padding="checkbox">
@@ -323,13 +323,21 @@ export default function EnhancedTable() {
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                 />
                                             </TableCell>
-                                            <TableCell component="th" id={labelId} scope="row" padding="none">
+                                            <TableCell align="center" >{row.documentName}</TableCell>
+                                            <TableCell align="center">{row.documentID}</TableCell>
+                                            <TableCell align="center">{row.resultKey}</TableCell>
+                                            <TableCell align="center">{row.resultValue}</TableCell>
+                                            <TableCell align="center">{row.resultValueExtracted}</TableCell>
+                                            <TableCell align="center">{row.igniteElementID}</TableCell>
+                                            <TableCell align="center">{row.isModified}</TableCell>
+                                            <TableCell align="center">{row.annotationID}</TableCell>
+                                            {/* <TableCell component="th" id={labelId} scope="row" padding="none">
                                                 {row.name}
                                             </TableCell>
-                                            <TableCell align="right">{row.calories}</TableCell>
-                                            <TableCell align="right">{row.fat}</TableCell>
+                                            <TableCell align="right">{row.documentName}</TableCell>
+                                            <TableCell align="right">{row.}</TableCell>
                                             <TableCell align="right">{row.carbs}</TableCell>
-                                            <TableCell align="right">{row.protein}</TableCell>
+                                            <TableCell align="right">{row.protein}</TableCell> */}
                                         </TableRow>
                                     );
                                 })}
@@ -351,7 +359,7 @@ export default function EnhancedTable() {
                     onChangeRowsPerPage={handleChangeRowsPerPage}
                 />
             </Paper>
-            
+
         </div>
     );
 }

@@ -4,7 +4,7 @@ import "./styles/App.css";
 import Main from "./components/main/main";
 import Detail from "./components/detail/detail";
 import { deepPurple } from '@material-ui/core/colors';
-
+import Files from './static/files.json';
 
 function App() {
   const font = "'Open Sans Condensed', 'sans-serif'";
@@ -39,13 +39,18 @@ function App() {
     }
   });
 
+  const renderDetail = Files.map((file) => 
+   <Route key={file.id} path={file.link} exact render={() => <Detail fileIndex={file.id}/>}></Route>
+  );
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
             <Route path='/' exact component={Main}></Route>
-            <Route path='/detail' exact component={Detail}></Route>
+            {renderDetail}
+            {/* <Route path='/detail' exact component={Detail}></Route> */}
           </Switch>
         </Router>
       </ThemeProvider>

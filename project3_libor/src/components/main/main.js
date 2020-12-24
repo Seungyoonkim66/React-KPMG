@@ -7,9 +7,12 @@ import PersonIcon from '@material-ui/icons/Person';
 import { deepPurple } from '@material-ui/core/colors';
 import Avatar from '@material-ui/core/Avatar';
 import UploadButton from './uploadbutton';
+
 import ResultTable from './resulttable';
+
 import FileList from './filelist';
 import KPMGlogo from '../../static/KPMG_logo_white.svg';
+import PopUp from './popup';
 
 const user = "user_name";
 
@@ -18,11 +21,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        whiteSpace: 'nowrap',
-        margin: theme.spacing(2),
-    },
-    divider: {
-        margin: theme.spacing(2, 0),
+        margin: theme.spacing(1),
     },
     icon: {
         position: 'relative',
@@ -36,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         textAlign: 'left',
         color: theme.palette.text.secondary,
-        whiteSpace: 'nowrap',
-        margin: theme.spacing(2),
+        whiteSpace: 'wrap',
+        margin: theme.spacing(1),
         display: 'flex',
         flexDirection: 'column',
     },
     user: {
         marginTop: theme.spacing(1),
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         backgroundColor: '#33334c',
         borderRadius: '4px',
     },
@@ -55,11 +54,11 @@ export default function Main() {
     const classes = useStyles();
 
     return (
-        <Container fixed>
-            <Grid container>
-                <Grid item xs={3} direction="column" justify="center" alignItems="stretch" >
+        <Container fluid="true">
+            <Grid container justify="center" alignItems="stretch" >
+                <Grid item xs={3}>
                     <Box bgcolor="primary.light" className={classes.logo} height={200}>
-                        <img src={KPMGlogo} alt="KPMG_logo" style={{ width: '40%', marginBottom:'3%' }} />
+                        <a href="/"><img src={KPMGlogo} alt="KPMG_logo" style={{ width: '40%', marginBottom: '3%' }} /></a>
                         <div className={classes.user} id='user-info'>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <Avatar className={classes.avatar}><PersonIcon /></Avatar>
@@ -72,12 +71,16 @@ export default function Main() {
                     <Box bgcolor="primary.light" color='text.primary' className={classes.box} height={100}>
                         <UploadButton />
                     </Box>
-                    <Box bgcolor="primary.light" className={classes.box} height={535}>
+                    <Box bgcolor="primary.light" className={classes.box} height={550}>
                         <FileList />
                     </Box>
                 </Grid>
-                <Grid item xs={9} direction="column" justify="center" alignItems="stretch" >
-                    <Box bgcolor="primary.light" className={classes.box} height={900}>
+                <Grid item xs={9}>
+                    <Box bgcolor="primary.light" className={classes.box} height={898}>
+                        <div style={{ textAlign: 'left', padding: '5% 2%', fontSize: '3rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            libor
+                <PopUp btnTitle="how to use" />
+                        </div>
                         <ResultTable />
                     </Box>
                 </Grid>
