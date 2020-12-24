@@ -78,6 +78,7 @@ const headCells = [
     { id: 'annotationID', numeric: false, label: 'annotationID' },
 ];
 
+
 function EnhancedTableHead(props) {
     const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
     const createSortHandler = (property) => (event) => {
@@ -86,7 +87,7 @@ function EnhancedTableHead(props) {
 
     return (
         <TableHead>
-            <TableRow>
+            <TableRow className={classes.headRow}>
                 <TableCell padding="checkbox">
                     <Checkbox
                         indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -199,11 +200,8 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         width: '100%',
         marginBottom: theme.spacing(2),
-        backgroundColor: 'rgba(255,255, 255, 0.3)',
+        backgroundColor: 'rgba(255,255, 255, 0.7)',
         textAlign: 'left',
-    },
-    table: {
-        // minWidth: 750,
     },
     visuallyHidden: {
         border: 0,
@@ -216,9 +214,12 @@ const useStyles = makeStyles((theme) => ({
         top: 20,
         width: 1,
     },
+    headRow: {
+        backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    },
 }));
 
-export default function EnhancedTable() {
+export default function ResultTable() {
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -271,10 +272,6 @@ export default function EnhancedTable() {
         setPage(0);
     };
 
-    // const handleChangeDense = (event) => {
-    //     setDense(event.target.checked);
-    // };
-
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
 
@@ -286,7 +283,6 @@ export default function EnhancedTable() {
                 <EnhancedTableToolbar numSelected={selected.length} />
                 <TableContainer>
                     <Table
-                        className={classes.table}
                         aria-labelledby="tableTitle"
                         size={dense ? 'small' : 'medium'}
                         aria-label="enhanced table"
@@ -331,13 +327,6 @@ export default function EnhancedTable() {
                                             <TableCell align="center">{row.igniteElementID}</TableCell>
                                             <TableCell align="center">{row.isModified}</TableCell>
                                             <TableCell align="center">{row.annotationID}</TableCell>
-                                            {/* <TableCell component="th" id={labelId} scope="row" padding="none">
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell align="right">{row.documentName}</TableCell>
-                                            <TableCell align="right">{row.}</TableCell>
-                                            <TableCell align="right">{row.carbs}</TableCell>
-                                            <TableCell align="right">{row.protein}</TableCell> */}
                                         </TableRow>
                                     );
                                 })}
