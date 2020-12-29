@@ -17,29 +17,31 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
 
-function createRow( rowID, documentName, documentID, resultKey, resultValue, resultValueExtracted, igniteElementID, isModified, annotationID) {
-    return { rowID, documentName, documentID, resultKey, resultValue, resultValueExtracted, igniteElementID, isModified, annotationID };
-}
+// function createRow(rowID, documentName, documentID, resultKey, resultValue, resultValueExtracted, igniteElementID, isModified, annotationID) {
+//     return { rowID, documentName, documentID, resultKey, resultValue, resultValueExtracted, igniteElementID, isModified, annotationID };
+// }
 
-const rows = [
-    createRow('0', 'file1.pdf', '1', 'Q1', 'A1', 'A1', '1', 'true', '1'),
-    createRow('1', 'file1.pdf', '1', 'Q2', 'A2', 'A2', '1', 'true', '2'),
-    createRow('2', 'file1.pdf', '1', 'Q3', 'A3', 'A3', '1', 'true', '3'),
+// function deleteRow(selected) {
+//     const deleteRowID = rows.indexOf(selected);
+// }
+// const rows = [
+//     createRow('0', 'file1.pdf', '1', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+//     createRow('1', 'file1.pdf', '1', 'Q2', 'A2', 'A2', '1', 'true', '2'),
+//     createRow('2', 'file1.pdf', '1', 'Q3', 'A3', 'A3', '1', 'true', '3'),
 
-    createRow('3', 'file2.pdf', '2', 'Q1', 'A1', 'A1', '1', 'true', '1'),
-    createRow('4', 'file2.pdf', '2', 'Q2', 'A2', 'A2', '1', 'true', '2'),
+//     createRow('3', 'file2.pdf', '2', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+//     createRow('4', 'file2.pdf', '2', 'Q2', 'A2', 'A2', '1', 'true', '2'),
 
-    createRow('5', 'file3.pdf', '3', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+//     createRow('5', 'file3.pdf', '3', 'Q1', 'A1', 'A1', '1', 'true', '1'),
 
-    createRow('6', 'file4.pdf', '1', 'Q1', 'A1', 'A1', '1', 'true', '1'),
-    createRow('7', 'file4.pdf', '1', 'Q2', 'A2', 'A2', '1', 'true', '2'),
-    createRow('8', 'file4.pdf', '1', 'Q3', 'A3', 'A3', '1', 'true', '3'),
+//     createRow('6', 'file4.pdf', '1', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+//     createRow('7', 'file4.pdf', '1', 'Q2', 'A2', 'A2', '1', 'true', '2'),
+//     createRow('8', 'file4.pdf', '1', 'Q3', 'A3', 'A3', '1', 'true', '3'),
 
-    createRow('9', 'file5.pdf', '5', 'Q1', 'A1', 'A1', '1', 'true', '1'),
+//     createRow('9', 'file5.pdf', '5', 'Q1', 'A1', 'A1', '1', 'true', '1'),
 
-];
+// ];
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -132,66 +134,70 @@ EnhancedTableHead.propTypes = {
     rowCount: PropTypes.number.isRequired,
 };
 
-const useToolbarStyles = makeStyles((theme) => ({
-    root: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(1),
-    },
-    highlight:
-        theme.palette.type === 'light'
-            ? {
-                color: theme.palette.secondary.main,
-                backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-            }
-            : {
-                color: theme.palette.text.primary,
-                backgroundColor: theme.palette.secondary.dark,
-            },
-    title: {
-        flex: '1 1 100%',
-    },
-}));
+// const useToolbarStyles = makeStyles((theme) => ({
+//     root: {
+//         paddingLeft: theme.spacing(2),
+//         paddingRight: theme.spacing(1),
+//     },
+//     highlight:
+//         theme.palette.type === 'light'
+//             ? {
+//                 color: theme.palette.secondary.main,
+//                 backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+//             }
+//             : {
+//                 color: theme.palette.text.primary,
+//                 backgroundColor: theme.palette.secondary.dark,
+//             },
+//     title: {
+//         flex: '1 1 100%',
+//     },
+// }));
 
-const EnhancedTableToolbar = (props) => {
-    const classes = useToolbarStyles();
-    const { numSelected } = props;
+// const EnhancedTableToolbar = (props) => {
+//     const classes = useToolbarStyles();
+//     const { numSelected, selected, rows } = props;
 
-    return (
-        <Toolbar
-            className={clsx(classes.root, {
-                [classes.highlight]: numSelected > 0,
-            })}
-        >
-            {numSelected > 0 ? (
-                <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-                    {numSelected} selected
-                </Typography>
-            ) : (
-                    <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                        table subtitle
-                    </Typography>
-                )}
 
-            {numSelected > 0 ? (
-                <Tooltip title="Delete">
-                    <IconButton aria-label="delete">
-                        <DeleteIcon />
-                    </IconButton>
-                </Tooltip>
-            ) : (
-                    <Tooltip title="Filter list">
-                        <IconButton aria-label="filter list">
-                            <FilterListIcon />
-                        </IconButton>
-                    </Tooltip>
-                )}
-        </Toolbar>
-    );
-};
+//     const handleDelete = () => {
+//         console.log(selected.map((id) => {
+//             return rows.filter((row) => row.rowID !== id);
+//         }
+//         ));
+//     }
 
-EnhancedTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired,
-};
+//     return (
+//         <Toolbar
+//             className={clsx(classes.root, {
+//                 [classes.highlight]: numSelected > 0,
+//             })}
+//         >
+//             {numSelected > 0 ? (
+//                 <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
+//                     {numSelected} selected
+//                 </Typography>
+//             ) : (
+//                     <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+//                         table subtitle
+//                     </Typography>
+//                 )}
+
+//             {numSelected > 0 ? (
+//                 <Tooltip title="Delete">
+//                     <IconButton aria-label="delete" onClick={handleDelete}>
+//                         <DeleteIcon />
+//                     </IconButton>
+//                 </Tooltip>
+//             ) : (
+//                     null
+//                 )}
+//         </Toolbar>
+//     );
+// };
+
+// EnhancedTableToolbar.propTypes = {
+//     numSelected: PropTypes.number.isRequired,
+// };
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -214,12 +220,65 @@ const useStyles = makeStyles((theme) => ({
         top: 20,
         width: 1,
     },
+    toolBarRoot: {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(1),
+    },
     headRow: {
         backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    },
+    highlight:
+        theme.palette.type === 'light'
+            ? {
+                color: theme.palette.secondary.main,
+                backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+            }
+            : {
+                color: theme.palette.text.primary,
+                backgroundColor: theme.palette.secondary.dark,
+            },
+    title: {
+        flex: '1 1 100%',
     },
 }));
 
 export default function ResultTable() {
+
+    const [rows, setRow] = React.useState([
+        {
+            rowID: 0,
+            documentName: 'file1.pdf',
+            documentID: 1,
+            resultKey: 'Q1',
+            resultValue: 'A1',
+            resultValueExtracted: 'A1',
+            igniteElementID: 1,
+            isModified: 'true',
+            annotationID: 1,
+        },
+        {
+            rowID: 1,
+            documentName: 'file1.pdf',
+            documentID: 1,
+            resultKey: 'Q2',
+            resultValue: 'A2',
+            resultValueExtracted: 'A2',
+            igniteElementID: 2,
+            isModified: 'true',
+            annotationID: 2,
+        },
+        {
+            rowID: 2,
+            documentName: 'file2.pdf',
+            documentID: 2,
+            resultKey: 'Q1',
+            resultValue: 'A1',
+            resultValueExtracted: 'A1',
+            igniteElementID: 1,
+            isModified: 'true',
+            annotationID: 1,
+        },
+    ]);
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -259,7 +318,6 @@ export default function ResultTable() {
                 selected.slice(selectedIndex + 1),
             );
         }
-
         setSelected(newSelected);
     };
 
@@ -274,13 +332,61 @@ export default function ResultTable() {
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
-
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+    const handleDelete = () => {
+
+        const selectedRows = selected.map((index) => {
+            return rows[index];
+        });
+        // console.log(selectedRows);
+
+        selectedRows.map(selectedRow => {
+            return rows.splice(rows.filter(row => row === selectedRow),1);
+        });
+
+        const newRows = selectedRows.map(selectedRow => rows.splice(rows.filter(row => row !== selectedRow),1));
+
+        setRow(newRows[0]);
+
+    }
+
+    const numSelected = selected.length;
 
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                {/* <EnhancedTableToolbar 
+                    numSelected={selected.length} 
+                    selected={selected} 
+                    setRow={setRow} 
+                    rows={rows}
+                /> */}
+                <Toolbar
+                    className={clsx(classes.toolBarRoot, {
+                        [classes.highlight]: numSelected > 0,
+                    })}
+                >
+                    {numSelected > 0 ? (
+                        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
+                            {numSelected} selected
+                        </Typography>
+                    ) : (
+                            <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+                                table subtitle
+                            </Typography>
+                        )}
+
+                    {numSelected > 0 ? (
+                        <Tooltip title="Delete">
+                            <IconButton aria-label="delete" onClick={handleDelete}>
+                                <DeleteIcon />
+                            </IconButton>
+                        </Tooltip>
+                    ) : (
+                            null
+                        )}
+                </Toolbar>
                 <TableContainer>
                     <Table
                         aria-labelledby="tableTitle"

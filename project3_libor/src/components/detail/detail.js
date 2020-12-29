@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import ResultValue from './resultvalue';
 import SampleImage from '../../static/sample_image.jpg';
-import Files from '../../static/files.json';
+import Files from '../../static/samplefile.json';
 import CloseIcon from '@material-ui/icons/Close';
 import { Link } from "react-router-dom";
 import IconButton from '@material-ui/core/IconButton';
@@ -36,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Detail({ fileIndex }) {
+export default function Detail({ fileId }) {
     const classes = useStyles();
+    const file = Files.files[fileId];
 
     return (
         <Container id='detail'>
@@ -45,7 +46,7 @@ export default function Detail({ fileIndex }) {
                 <Grid item xs={12} >
                     <Box bgcolor="primary.light" className={classes.box} height={50}>
                         <div className={classes.controlBar}>
-                            {Files[fileIndex].name}
+                            {/* {file.name} */}
                             <Link to='/' style={{ textDecoration: 'none' }}>
                                 <IconButton aria-label="delete" color="default">
                                     <CloseIcon fontSize="large" />
@@ -57,7 +58,7 @@ export default function Detail({ fileIndex }) {
                 <Grid item xs={5}>
                     <div style={{ textAlign: 'left', marginLeft: '20px' }}>Annotations</div>
                     <Box bgcolor="primary.light" className={classes.table} height={630}>
-                        <ResultValue fileIndex={fileIndex} />
+                        <ResultValue fileIndex={fileId} />
                     </Box>
                 </Grid>
                 <Grid item xs={7} >
@@ -94,10 +95,10 @@ export default function Detail({ fileIndex }) {
                                     marginLeft: '1%',
                                     color: 'black',
                                 }}>
-                                <div id='doc_info_table_each_row'>{Files[fileIndex].name}</div>
-                                <div id='doc_info_table_each_row'>{Files[fileIndex].pages}</div>
-                                <div id='doc_info_table_each_row'>{Files[fileIndex].processing_date}</div>
-                                <div id='doc_info_table_each_row'>{Files[fileIndex].uploader}</div>
+                                <div id='doc_info_table_each_row'></div>
+                                <div id='doc_info_table_each_row'></div>
+                                <div id='doc_info_table_each_row'></div>
+                                <div id='doc_info_table_each_row'></div>
                             </div>
                         </div>
                     </Box>

@@ -1,0 +1,32 @@
+{
+    "files": [
+        {
+            "id": "0",
+            "name": "file 0"
+        },
+        {
+            "id": "1",
+            "name": "file 1"
+        },
+        {
+            "id": "2",
+            "name": "file 2"
+        },
+        {
+            "id": "3",
+            "name": "file 3"
+        },
+        {
+            "id": "4",
+            "name": "file 4"
+        },
+        {
+            "id": "5",
+            "name": "file 5"
+        },
+        {
+            "id": "6",
+            "name": "file 6"
+        }
+    ]
+}

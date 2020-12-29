@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: theme.palette.text.secondary,
         margin: theme.spacing(1),
+        whiteSpace: 'wrap',
     },
     icon: {
         position: 'relative',

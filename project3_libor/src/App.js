@@ -2,9 +2,9 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import "./styles/App.css";
 import Main from "./components/main/main";
-import Detail from "./components/detail/detail";
+import Detail from "./components/detail/tempdetail";
 import { deepPurple } from '@material-ui/core/colors';
-import Files from './static/files.json';
+import Files from './static/samplefile.json';
 
 function App() {
   const font = "'Open Sans Condensed', 'sans-serif'";
@@ -16,7 +16,7 @@ function App() {
       },
       secondary: {
         main: '#483698'
-      }
+      },
     },
     typography: {
       fontFamily: font,
@@ -27,20 +27,23 @@ function App() {
           backgroundColor: 'rgba(255,255,255,0)',
           color: deepPurple[50],
           '&:hover fieldset': {
-            // backgroundColor: '#33334c',
-            // borderColor: deepPurple[300]
           },
           '&.Mui-focused feldset': {
-            // backgroundColor: '#33334c',
-            // borderColor: deepPurple[300]
           }
         }
       }
     }
   });
+  
+  const getFiles = Files.files;
 
-  const renderDetail = Files.map((file) => 
-   <Route key={file.id} path={file.link} exact render={() => <Detail fileIndex={file.id}/>}></Route>
+  const renderDetail = getFiles.map((file) => 
+   <Route 
+      key={file.id} 
+      path={file.id} 
+      exact 
+      render={() => <Detail fileId={file.id}/>}>
+   </Route>
   );
 
   return (

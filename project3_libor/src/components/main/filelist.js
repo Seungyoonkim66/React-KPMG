@@ -5,15 +5,18 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Box from '@material-ui/core/Box';
-import Files from '../../static/files.json';
+import Files from '../../static/samplefile.json';
 
-const fileList = Files.map((file) => 
-    <Link key={file.id} style={{ textDecoration: 'none', color: 'black' }} to={file.link}>
+const getFile = Files.files;
+
+const fileList = getFile.map((file) => 
+    <Link key={file.id} style={{ textDecoration: 'none', color: 'black' }} to={file.id}>
         <ListItem button>
             <ListItemText primary={file.name}/>
         </ListItem>
     </Link>
 );
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
