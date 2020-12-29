@@ -46,7 +46,7 @@ export default function Detail({ fileId }) {
                 <Grid item xs={12} >
                     <Box bgcolor="primary.light" className={classes.box} height={50}>
                         <div className={classes.controlBar}>
-                            {/* {file.name} */}
+                            {file.name}
                             <Link to='/' style={{ textDecoration: 'none' }}>
                                 <IconButton aria-label="delete" color="default">
                                     <CloseIcon fontSize="large" />
@@ -58,7 +58,7 @@ export default function Detail({ fileId }) {
                 <Grid item xs={5}>
                     <div style={{ textAlign: 'left', marginLeft: '20px' }}>Annotations</div>
                     <Box bgcolor="primary.light" className={classes.table} height={630}>
-                        <ResultValue fileIndex={fileId} />
+                        {/* <ResultValue fileIndex={fileId} /> */}
                     </Box>
                 </Grid>
                 <Grid item xs={7} >

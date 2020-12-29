@@ -20,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
     box: {
         padding: theme.spacing(1),
         textAlign: 'center',
-        color: theme.palette.text.secondary,
         margin: theme.spacing(1),
         whiteSpace: 'wrap',
+        borderRadius:'4px',
     },
     icon: {
         position: 'relative',
@@ -35,16 +35,16 @@ const useStyles = makeStyles((theme) => ({
     logo: {
         padding: theme.spacing(1),
         textAlign: 'left',
-        color: theme.palette.text.secondary,
         whiteSpace: 'wrap',
         margin: theme.spacing(1),
         display: 'flex',
         flexDirection: 'column',
+        borderRadius:'4px',
     },
     user: {
         marginTop: theme.spacing(1),
         padding: theme.spacing(1),
-        backgroundColor: '#33334c',
+        // backgroundColor: '#33334c',
         borderRadius: '4px',
     },
 }));

@@ -2,9 +2,10 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import "./styles/App.css";
 import Main from "./components/main/main";
-import Detail from "./components/detail/tempdetail";
+import Main2 from "./components/main_ver2/main_ver2";
 import { deepPurple } from '@material-ui/core/colors';
 import Files from './static/samplefile.json';
+import Detail from "./components/detail_ver2/detail_ver2";
 
 function App() {
   const font = "'Open Sans Condensed', 'sans-serif'";
@@ -15,7 +16,8 @@ function App() {
         main: '#33334c',
       },
       secondary: {
-        main: '#483698'
+        main: '#f5f5f5',
+        light: '#f5f5f5',
       },
     },
     typography: {
@@ -40,9 +42,9 @@ function App() {
   const renderDetail = getFiles.map((file) => 
    <Route 
       key={file.id} 
-      path={file.id} 
-      exact 
-      render={() => <Detail fileId={file.id}/>}>
+      path={parseInt(file.id)} 
+      render={() => <Detail fileId={file.id}/>}
+    >
    </Route>
   );
 
@@ -51,7 +53,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
-            <Route path='/' exact component={Main}></Route>
+            <Route path='/' exact component={Main2}></Route>
+            <Route path='/ver1' exact component={Main}></Route>
             {renderDetail}
             {/* <Route path='/detail' exact component={Detail}></Route> */}
           </Switch>
