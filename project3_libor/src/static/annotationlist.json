@@ -1,0 +1,95 @@
+{
+    "annotatonlist": [
+        {
+            "id" : "0",
+            "fileID" : "0",
+            "fileName": "file0.pdf",
+            "resultKey" : "question1",
+            "resultValue" : "value1"
+        },
+        {
+            "id" : "1",
+            "fileID" : "0",
+            "fileName": "file0.pdf",
+            "resultKey" : "question2",
+            "resultValue" : "value2"
+        },
+        {
+            "id" : "2",
+            "fileID" : "0",
+            "fileName": "file0.pdf",
+            "resultKey" : "question3",
+            "resultValue" : "value3"
+        },
+        {
+            "id" : "3",
+            "fileID" : "1",
+            "fileName": "file1.pdf",
+            "resultKey" : "question1",
+            "resultValue" : "value1"
+        },
+        {
+            "id" : "4",
+            "fileID" : "1",
+            "fileName": "file1.pdf",
+            "resultKey" : "question2",
+            "resultValue" : "value2"
+        },
+        {
+            "id" : "5",
+            "fileID" : "2",
+            "fileName": "file2.pdf",
+            "resultKey" : "question1",
+            "resultValue" : "value1"
+        },
+        {
+            "id" : "6",
+            "fileID" : "2",
+            "fileName": "file2.pdf",
+            "resultKey" : "question2",
+            "resultValue" : "value2"
+        },
+        {
+            "id" : "7",
+            "fileID" : "2",
+            "fileName": "file2.pdf",
+            "resultKey" : "question3",
+            "resultValue" : "value3"
+        },
+        {
+            "id" : "8",
+            "fileID" : "2",
+            "fileName": "file2.pdf",
+            "resultKey" : "question4",
+            "resultValue" : "value5"
+        },
+        {
+            "id" : "9",
+            "fileID" : "3",
+            "fileName": "file3.pdf",
+            "resultKey" : "question1",
+            "resultValue" : "value1"
+        },
+        {
+            "id" : "10",
+            "fileID" : "4",
+            "fileName": "file4.pdf",
+            "resultKey" : "question1",
+            "resultValue" : "value1"
+        },
+        {
+            "id" : "11",
+            "fileID" : "5",
+            "fileName": "file5.pdf",
+            "resultKey" : "question1",
+            "resultValue" : "value1"
+        },
+        {
+            "id" : "12",
+            "fileID" : "6",
+            "fileName": "file6.pdf",
+            "resultKey" : "question1",
+            "resultValue" : "value1"
+        }
+    ]
+}

@@ -2,31 +2,31 @@
     "files": [
         {
             "id": "0",
-            "name": "file 0"
+            "name": "file 0.pdf"
         },
         {
             "id": "1",
-            "name": "file 1"
+            "name": "file 1.pdf"
         },
         {
             "id": "2",
-            "name": "file 2"
+            "name": "file 2.pdf"
         },
         {
             "id": "3",
-            "name": "file 3"
+            "name": "file 3.pdf"
         },
         {
             "id": "4",
-            "name": "file 4"
+            "name": "file 4.pdf"
         },
         {
             "id": "5",
-            "name": "file 5"
+            "name": "file 5.pdf"
         },
         {
             "id": "6",
-            "name": "file 6"
+            "name": "file 6.pdf"
         }
     ]
 }

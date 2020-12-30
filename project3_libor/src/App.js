@@ -3,7 +3,6 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import "./styles/App.css";
 import Main from "./components/main/main";
 import Main2 from "./components/main_ver2/main_ver2";
-import { deepPurple } from '@material-ui/core/colors';
 import Files from './static/samplefile.json';
 import Detail from "./components/detail_ver2/detail_ver2";
 
@@ -17,7 +16,7 @@ function App() {
       },
       secondary: {
         main: '#f5f5f5',
-        light: '#f5f5f5',
+        light: '#fba100',
       },
     },
     typography: {
@@ -26,15 +25,19 @@ function App() {
     overrides: {
       MuiOutlinedInput: {
         root: {
-          backgroundColor: 'rgba(255,255,255,0)',
-          color: deepPurple[50],
-          '&:hover fieldset': {
+          backgroundColor: 'rgba(255,255,255,0.5)',
+          '& fieldset': {
+            borderColor: "",
           },
-          '&.Mui-focused feldset': {
-          }
+          '&:hover fieldset': {
+            borderColor: '',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: '',
+          },
         }
       }
-    }
+    },
   });
   
   const getFiles = Files.files;
@@ -42,8 +45,9 @@ function App() {
   const renderDetail = getFiles.map((file) => 
    <Route 
       key={file.id} 
-      path={parseInt(file.id)} 
-      render={() => <Detail fileId={file.id}/>}
+      path={`/${parseInt(file.id)}`} 
+      exact
+      render={() => <Detail fileId={parseInt(file.id)} />}
     >
    </Route>
   );

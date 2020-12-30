@@ -31,19 +31,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ResultValue({ fileIndex }) {
   const classes = useStyles();
-  // const resultValue = Files[fileIndex].QAs.map((QA, i) =>
-  //   <FormControl key={i}>
-  //     <InputLabel htmlFor="data"></InputLabel>
-  //     <div style={{ marginBottom: '3%' }}>
-  //       <TextField
-  //         label={QA.Q}
-  //         defaultValue={QA.A}
-  //         variant="outlined"
-  //         fullWidth
-  //       />
-  //     </div>
-  //   </FormControl>
-  // );
+  const resultValue = Files[fileIndex].QAs.map((QA, i) =>
+    <FormControl key={i}>
+      <InputLabel htmlFor="data"></InputLabel>
+      <div style={{ marginBottom: '3%' }}>
+        <TextField
+          label={QA.Q}
+          defaultValue={QA.A}
+          variant="outlined"
+          fullWidth
+        />
+      </div>
+    </FormControl>
+  );
 
   const handleClick = () => {
     console.log('click');

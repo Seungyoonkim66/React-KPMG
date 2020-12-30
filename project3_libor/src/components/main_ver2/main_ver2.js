@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import ResultTable from '../main_ver2/resulttable_ver2';
 import FileList from '../main_ver2/filelist_ver2';
 import KPMGlogo from '../../static/KPMG_logo_white.svg';
+import lighthouselogo from '../../static/lighthouse_logo.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -58,9 +59,9 @@ export default function Main() {
                     <Grid container direction="row" justify="center" alignItems="center" >
                         <Grid item> <a href="/"><img src={KPMGlogo} alt="KPMG_logo" width='150px' /></a></Grid>
                         <Divider orientation="vertical" flexItem className={classes.divider} color='secondary.light' />
-                        <Grid item><div style={{ fontSize: '55px' }}>Libor</div></Grid>
+                        <Grid item><a href="/" style={{textDecoration:'none', color:'inherit'}}><div style={{ fontSize: '55px' }}>Libor</div></a></Grid>
                         <Divider orientation="vertical" flexItem className={classes.divider} color='secondary.light' />
-                        <Grid item> <div style={{ fontSize: '55px' }}>Logo</div></Grid>
+                        <Grid item><a href="/"><img src={lighthouselogo} alt="KPMG_logo" width='70px'/></a></Grid>
                     </Grid>
                 </Container>
             </div>

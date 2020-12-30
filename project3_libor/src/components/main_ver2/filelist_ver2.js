@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'rgba(255,255,255,0.3)',
     },
     listTitle: {
-        backgroundColor: 'rgba(255,255,255,0.5)',
+        backgroundColor: 'rgba(255,255,255,0.4)',
         textAlign:'left',
         paddingLeft: theme.spacing(2),
         fontSize: '20px',
@@ -46,7 +46,7 @@ export default function FileList() {
     return (
         <div className={classes.root}>
             <Box className={classes.box} height={682.5}>
-                <div className={classes.listTitle} id='filelist-title'>Files</div>
+                <div className={classes.listTitle} id='filelist-title'>FILES</div>
                 <List component="nav">{fileList}</List>
             </Box>
         </div>

@@ -17,6 +17,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import annotationlist from '../../static/annotationlist.json';
+
+const getRows = annotationlist.annotatonlist;
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -45,14 +48,11 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-    { id: 'documentName', numeric: false, label: 'documentName' },
-    { id: 'documentID', numeric: false, label: 'documentID' },
+    { id: 'id', numeric: false, label: 'id' },
+    { id: 'fileID', numeric: false, label: 'fileID' },
+    { id: 'fileName', numeric: false, label: 'fileName' },
     { id: 'resultKey', numeric: false, label: 'resultKey' },
     { id: 'resultValue', numeric: false, label: 'resultValue' },
-    { id: 'resultValueExtracted', numeric: false, label: 'resultValueExtracted' },
-    { id: 'igniteElementID', numeric: false, label: 'igniteElementID' },
-    { id: 'disModified', numeric: false, label: 'isModified' },
-    { id: 'annotationID', numeric: false, label: 'annotationID' },
 ];
 
 
@@ -70,14 +70,12 @@ function EnhancedTableHead(props) {
                         indeterminate={numSelected > 0 && numSelected < rowCount}
                         checked={rowCount > 0 && numSelected === rowCount}
                         onChange={onSelectAllClick}
-                        inputProps={{ 'aria-label': 'select all desserts' }}
                     />
                 </TableCell>
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'left'}
-                        padding={headCell.disablePadding ? 'none' : 'default'}
+                        align='center'
                         sortDirection={orderBy === headCell.id ? order : false}
                     >
                         <TableSortLabel
@@ -149,41 +147,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ResultTable() {
 
-    const [rows, setRow] = React.useState([
-        {
-            rowID: 0,
-            documentName: 'file1.pdf',
-            documentID: 1,
-            resultKey: 'Q1',
-            resultValue: 'A1',
-            resultValueExtracted: 'A1',
-            igniteElementID: 1,
-            isModified: 'true',
-            annotationID: 1,
-        },
-        {
-            rowID: 1,
-            documentName: 'file1.pdf',
-            documentID: 1,
-            resultKey: 'Q2',
-            resultValue: 'A2',
-            resultValueExtracted: 'A2',
-            igniteElementID: 2,
-            isModified: 'true',
-            annotationID: 2,
-        },
-        {
-            rowID: 2,
-            documentName: 'file2.pdf',
-            documentID: 2,
-            resultKey: 'Q1',
-            resultValue: 'A1',
-            resultValueExtracted: 'A1',
-            igniteElementID: 1,
-            isModified: 'true',
-            annotationID: 1,
-        },
-    ]);
+    const [rows, setRow] = React.useState(getRows);
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -200,7 +164,7 @@ export default function ResultTable() {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelecteds = rows.map((n) => n.rowID);
+            const newSelecteds = rows.map((n) => n.id);
             setSelected(newSelecteds);
             return;
         }
@@ -240,20 +204,13 @@ export default function ResultTable() {
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     const handleDelete = () => {
-
-        const selectedRows = selected.map((index) => {
-            return rows[index];
-        });
-        // console.log(selectedRows);
-
-        selectedRows.map(selectedRow => {
-            return rows.splice(rows.filter(row => row === selectedRow),1);
-        });
-
-        const newRows = selectedRows.map(selectedRow => rows.splice(rows.filter(row => row !== selectedRow),1));
-
-        setRow(newRows[0]);
-
+        // const selectedRows = selected.map((index) => { return rows[index]; });
+        // selectedRows.map(selectedRow => { return rows.splice(rows.filter(row => row === selectedRow),1); });
+        // const newRows = selectedRows.map(selectedRow => rows.splice(rows.filter(row => row !== selectedRow),1));
+        // setRow(newRows[0]);
+        console.log(selected);
+        setSelected([]);
+        alert("delete : deleted items' annotation id can be checked in console.");
     }
 
     const numSelected = selected.length;
@@ -261,18 +218,14 @@ export default function ResultTable() {
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
-                <Toolbar
-                    className={clsx(classes.toolBarRoot, {
-                        [classes.highlight]: numSelected > 0,
-                    })}
-                >
+                <Toolbar className={clsx(classes.toolBarRoot, { [classes.highlight]: numSelected > 0, })}>
                     {numSelected > 0 ? (
                         <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
                             {numSelected} selected
                         </Typography>
                     ) : (
                             <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                                table subtitle
+                                ANNOTATIONS
                             </Typography>
                         )}
 
@@ -287,11 +240,7 @@ export default function ResultTable() {
                         )}
                 </Toolbar>
                 <TableContainer>
-                    <Table
-                        aria-labelledby="tableTitle"
-                        size={dense ? 'small' : 'medium'}
-                        aria-label="enhanced table"
-                    >
+                    <Table aria-labelledby="tableTitle" size={dense ? 'small' : 'medium'}  aria-label="enhanced table">
                         <EnhancedTableHead
                             classes={classes}
                             numSelected={selected.length}
@@ -305,33 +254,25 @@ export default function ResultTable() {
                             {stableSort(rows, getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
-                                    const isItemSelected = isSelected(row.rowID);
+                                    const isItemSelected = isSelected(row.id);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.rowID)}
+                                            onClick={(event) => handleClick(event, row.id)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={row.rowID}
+                                            key={row.id}
                                             selected={isItemSelected}
                                         >
-                                            <TableCell padding="checkbox">
-                                                <Checkbox
-                                                    checked={isItemSelected}
-                                                    inputProps={{ 'aria-labelledby': labelId }}
-                                                />
-                                            </TableCell>
-                                            <TableCell align="center" >{row.documentName}</TableCell>
-                                            <TableCell align="center">{row.documentID}</TableCell>
+                                            <TableCell padding="checkbox"><Checkbox checked={isItemSelected} inputProps={{ 'aria-labelledby': labelId }}/></TableCell>
+                                            <TableCell align="center" >{row.id}</TableCell>
+                                            <TableCell align="center">{row.fileID}</TableCell>
+                                            <TableCell align="center">{row.fileName}</TableCell>
                                             <TableCell align="center">{row.resultKey}</TableCell>
                                             <TableCell align="center">{row.resultValue}</TableCell>
-                                            <TableCell align="center">{row.resultValueExtracted}</TableCell>
-                                            <TableCell align="center">{row.igniteElementID}</TableCell>
-                                            <TableCell align="center">{row.isModified}</TableCell>
-                                            <TableCell align="center">{row.annotationID}</TableCell>
                                         </TableRow>
                                     );
                                 })}
@@ -344,7 +285,7 @@ export default function ResultTable() {
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[8, 16]}
+                    rowsPerPageOptions={[1, 5, 8, 10, 16]}
                     component="div"
                     count={rows.length}
                     rowsPerPage={rowsPerPage}
