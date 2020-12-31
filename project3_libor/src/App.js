@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import "./styles/App.css";
 import Main from "./components/main/main";
@@ -6,6 +7,10 @@ import Main2 from "./components/main_ver2/main_ver2";
 import Files from './static/samplefile.json';
 import Detail from "./components/detail_ver2/detail_ver2";
 import Login from "./components/login/login";
+import LogoutButton from './components/login/logout';
+import { SignIn } from './Auth';
+import AuthRoute from './AuthRoute';
+
 
 function App() {
   const font = "'Open Sans Condensed', 'sans-serif'";
@@ -40,29 +45,38 @@ function App() {
       }
     },
   });
-  
-  const getFiles = Files.files;
 
-  const renderDetail = getFiles.map((file) => 
-   <Route 
-      key={file.id} 
-      path={`/${parseInt(file.id)}`} 
+  const getFiles = Files.files;
+  const [user, setUser] = React.useState(null);
+  const authenticated = user != null;
+
+  const login = ({ email, password }) => setUser(SignIn({ email, password }));
+  const logout = () => setUser(null);
+
+  const renderDetail = getFiles.map((file) =>
+    <AuthRoute
+      key={file.id}
+      authenticated={authenticated}
+      path={`/${parseInt(file.id)}`}
       exact
       render={() => <Detail fileId={parseInt(file.id)} />}
     >
-   </Route>
+    </AuthRoute>
   );
+
 
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <Router>
+           {authenticated ? ( <LogoutButton logout={logout} />) : (null)}
           <Switch>
-            <Route path='/login' exact component={Login}></Route>
-            <Route path='/' exact component={Main2}></Route>
-            <Route path='/ver1' exact component={Main}></Route>
+            <Route path='/' exact render={(props) => <Login authenticated={authenticated} login={login} />} ></Route>
+            <AuthRoute authenticated={authenticated} path='/main' Component={Main2} />
             {renderDetail}
-            {/* <Route path='/detail' exact component={Detail}></Route> */}
+
+            {/* ver 1 - temp */}
+            <Route path='/ver1' exact component={Main} />
           </Switch>
         </Router>
       </ThemeProvider>

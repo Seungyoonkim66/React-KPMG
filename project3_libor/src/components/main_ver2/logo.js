@@ -23,11 +23,11 @@ export default function Logo() {
     return (
         <div className={classes.root}>
             <Grid container direction="row" justify="center" alignItems="center" >
-                <Grid item> <a href="/"><img src={KPMGlogo} alt="KPMG_logo" width='150px' /></a></Grid>
+                <Grid item><img src={KPMGlogo} alt="KPMG_logo" width='150px' /></Grid>
                 <Divider orientation="vertical" flexItem className={classes.divider} color='secondary.light' />
-                <Grid item><a href="/" style={{ textDecoration: 'none', color: 'inherit' }}><div style={{ fontSize: '55px' }}>Libor</div></a></Grid>
+                <Grid item><div style={{ fontSize: '55px' }}>Libor</div></Grid>
                 <Divider orientation="vertical" flexItem className={classes.divider} color='secondary.light' />
-                <Grid item><a href="/"><img src={lighthouselogo} alt="KPMG_logo" width='70px' /></a></Grid>
+                <Grid item><img src={lighthouselogo} alt="KPMG_logo" width='70px' /></Grid>
             </Grid>
         </div>
     );

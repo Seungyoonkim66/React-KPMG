@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import Logo from '../main_ver2/logo';
 import LoginInput from './logininput';
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         textAlign: 'left',
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Login() {
+export default function Login({ authenticated, login }) {
     const classes = useStyles();
 
     return (
@@ -43,15 +44,15 @@ export default function Login() {
             <div className={classes.div}>
                 <Container className={classes.container}>
                     <Grid container direction="row" justify="center" alignItems="stretch" className={classes.gridContainer}>
-                        <Grid item xs={7} className={classes.gridItem}>
+                        {/* <Grid item xs={7} className={classes.gridItem}>
                            
-                        </Grid>
+                        </Grid> */}
 
                         <Grid item xs={5} className={classes.gridItem}>
                             <div className={classes.card}>
                                 <div style={{ fontSize: '50px', color: '#fff' }}>Login</div>
                                 <div id='login_card_txt' style={{ fontSize: '10px', color: '#999', borderBottom: '1px solid #999', paddingBottom: '8px' }}>Welcome. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-                                <LoginInput />
+                                <LoginInput authenticated = {authenticated} login={login}/>
                             </div>
                         </Grid>
                     </Grid>

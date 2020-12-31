@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom"
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -28,11 +28,10 @@ const testUsers = [
 ]
 
 
-export default function LoginInput() {
+export default function LoginInput({ authenticated, login }) {
     const classes = useStyles();
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-    const [auth, setAuth] = React.useState();
 
     const isEmailValid = ({ email }) => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -46,9 +45,11 @@ export default function LoginInput() {
     const authToLogin = ({ email, password }) => {
 
         if (isEmailValid({ email }) === true) {
-            const user = testUsers.find((user) => user.email === email && user.password === password)
-            if (user === undefined) return false;
-            setAuth(true);
+            // const user = testUsers.find((user) => user.email === email && user.password === password)
+            // if (user === undefined) return false;
+            // <Redirect to='/' />
+            // return true;
+            login({ email, password })
             return true;
         }
         else {
@@ -57,14 +58,17 @@ export default function LoginInput() {
     }
 
     const handleLogin = () => {
+
         if (email !== "" && password !== "") {
             if (authToLogin({ email, password }) === true) {
                 console.log("login success");
+                authenticated = true;
             }
             else {
                 alert('Login failed');
                 setEmail("");
                 setPassword("");
+                authenticated = false;
             }
         }
         else {
@@ -72,8 +76,9 @@ export default function LoginInput() {
         }
     }
 
-    return (
+    if (authenticated) return <Redirect to='/main' />
 
+    return (
         <div>
             <FormControl id='auth' fullWidth={true} className={classes.formControl} variant="outlined">
                 <TextField
@@ -96,7 +101,6 @@ export default function LoginInput() {
                 />
             </FormControl>
             <InputLabel htmlFor='auth'>
-                <Link style={{ textDecoration: 'none' }} to={auth ? "/" : "/login"}>
                     <Button
                         variant="contained"
                         fullWidth={true}
@@ -105,7 +109,6 @@ export default function LoginInput() {
                         className={classes.btn}
                     >login
                     </Button>
-                </Link>
             </InputLabel>
         </div>
     );

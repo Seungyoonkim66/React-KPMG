@@ -1,21 +1,11 @@
-import React from "react"
-import { Route, Redirect } from "react-router-dom"
+const users = [
+    { email: "kim@test.com", password: "123", name: "Kim" },
+    { email: "lee@test.com", password: "456", name: "Lee" },
+    { email: "park@test.com", password: "789", name: "Park" },
+]
 
-export default function Auth({ authenticated, component: Component, render }) {
-  return (
-    <Route render={(props) =>
-        authenticated ? (
-          render ? (
-            render(props)
-          ) : (
-            <Component {...props} />
-          )
-        ) : (
-          <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
-          />
-        )
-      }
-    />
-  )
+export function SignIn({ email, password }){
+    const user = users.find((user) => user.email === email && user.password === password);
+    if (user === undefined) return false;
+    return user;
 }
