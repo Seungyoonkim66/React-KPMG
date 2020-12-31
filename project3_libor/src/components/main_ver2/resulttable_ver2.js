@@ -210,6 +210,7 @@ export default function ResultTable() {
         // setRow(newRows[0]);
         console.log(selected);
         setSelected([]);
+        setRow(rows);
         alert("delete : deleted items' annotation id can be checked in console.");
     }
 

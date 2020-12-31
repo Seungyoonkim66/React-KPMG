@@ -5,6 +5,7 @@ import Main from "./components/main/main";
 import Main2 from "./components/main_ver2/main_ver2";
 import Files from './static/samplefile.json';
 import Detail from "./components/detail_ver2/detail_ver2";
+import Login from "./components/login/login";
 
 function App() {
   const font = "'Open Sans Condensed', 'sans-serif'";
@@ -57,6 +58,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
+            <Route path='/login' exact component={Login}></Route>
             <Route path='/' exact component={Main2}></Route>
             <Route path='/ver1' exact component={Main}></Route>
             {renderDetail}

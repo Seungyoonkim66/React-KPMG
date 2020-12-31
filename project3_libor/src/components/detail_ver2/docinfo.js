@@ -34,11 +34,11 @@ export default function DocInfo({ fileId }) {
             <Grid item xs={2} style={{color: 'black', fontSize:'20px'}}>
                 DOCUMENT INFORMATION
             </Grid>
-            <Grid item xs={3} className={classes.grid} style={{ backgroundColor:'rgba(255,255,255,0.3)'}}>
+            <Grid item xs={3} className={classes.grid} style={{ backgroundColor:'rgba(255,255,255,0.1)'}}>
                 <div className={classes.cell}>FILE ID</div>
                 <div className={classes.cell}>FILE NAME</div>
             </Grid>
-            <Grid item xs={7} className={classes.grid} style={{ backgroundColor:'rgba(255,255,255,0.1)'}}>
+            <Grid item xs={7} className={classes.grid} style={{ backgroundColor:'rgba(255,255,255,0.2)'}}>
                 <div className={classes.cellContent}>{file.id}</div>
                 <div className={classes.cellContent}>{file.fileName}</div>
             </Grid>
