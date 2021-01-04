@@ -10,12 +10,10 @@ export function FileDelete( { selected } ) {
         return deletedFiles.push(settingFile);
     })
 
+    console.log(deletedFiles);
     const formData = new FormData();
     formData.append("files", deletedFiles);
-    // JSON.stringify(formData.files);
 
-    // console.log(deletedFiles);
-    console.log(formData.files);
 
     axios.delete('http://.../files', formData)
     .then((reponse) => console.log(reponse))

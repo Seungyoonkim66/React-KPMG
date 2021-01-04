@@ -3,6 +3,7 @@ import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import KPMGlogo from '../../static/KPMG_logo_white.svg';
 import lighthouselogo from '../../static/lighthouse_logo.png';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {

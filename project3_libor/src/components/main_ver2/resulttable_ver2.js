@@ -18,9 +18,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import annotationlist from '../../static/annotationlist.json';
-import axios from 'axios';
-
-import { FileDelete } from '.././funct/delete';
+import { AnnotationDelete } from '.././funct/delete';
 
 const getRows = annotationlist.annotatonlist;
 
@@ -207,7 +205,7 @@ export default function ResultTable() {
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     const handleDelete = () => {
-        FileDelete({selected});
+        AnnotationDelete({selected});
         setSelected([]);
         alert("delete : deleted items' annotation id can be checked in console.");
     }

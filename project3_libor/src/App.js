@@ -78,9 +78,12 @@ function App() {
             <Route path='/' exact render={(props) => <Login authenticated={authenticated} login={login} />} ></Route>
             <AuthRoute authenticated={authenticated} path='/main' Component={Main2} />
             {renderDetail}
-
+            
             {/* ver 1 - temp */}
             <Route path='/ver1' exact component={Main} />
+            {/* temp */}
+            <Route path='/temp' exact component={Main2}></Route>
+
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
