@@ -44,9 +44,9 @@ export default function Login({ authenticated, login }) {
             <div className={classes.div}>
                 <Container className={classes.container}>
                     <Grid container direction="row" justify="center" alignItems="stretch" className={classes.gridContainer}>
-                        {/* <Grid item xs={7} className={classes.gridItem}>
+                        <Grid item xs={7} className={classes.gridItem}>
                            
-                        </Grid> */}
+                        </Grid>
 
                         <Grid item xs={5} className={classes.gridItem}>
                             <div className={classes.card}>

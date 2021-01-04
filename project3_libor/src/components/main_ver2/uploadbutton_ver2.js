@@ -36,7 +36,7 @@ export default function UploadButton() {
     const handleUpload = (e) => {
         e.preventDefault();
         const url = "http://.../upload-files";
-        const config = { headers: { 'Content-Type': 'application/jso' } };
+        const config = { headers: { 'Content-Type': 'application/json' } };
     
         const files = e.target.files;
         const filesArray = Object.values(files);
@@ -56,7 +56,7 @@ export default function UploadButton() {
         const formData = new FormData();
         formData.append("files", appendList);
         
-        axios.post(url, formData, config).then(()=>console.log("Success")).catch(()=>console.log("Fail"));
+        axios.post(url, formData, config).then(()=>console.log("Upload Success")).catch(()=>console.log("Upload Fail"));
     }
 
     return (

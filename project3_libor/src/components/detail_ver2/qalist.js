@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
+import { AnnotationDelete } from '.././funct/delete';
 
 const qalist = annotationlist.annotatonlist;
 
@@ -56,7 +57,8 @@ export default function QAList({ fileId }) {
     }
 
     const handleDelete = () => {
-        console.log(selected);
+        AnnotationDelete({selected});
+        setSelected([]);
         alert("checked items are deleted :  check deleted items' annotation id in console ");
     }
 

@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     },
     grid: {
         borderRadius: '4px',
-        boxShadow:'1px 1px 2px black'
     },
 }));
 

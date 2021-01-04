@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import "./styles/App.css";
@@ -18,7 +18,7 @@ function App() {
     palette: {
       primary: {
         light: '#3b3b58',
-        main: '#33334c',
+        main: '#33334c', 
       },
       secondary: {
         main: '#f5f5f5',
@@ -50,7 +50,10 @@ function App() {
   const [user, setUser] = React.useState(null);
   const authenticated = user != null;
 
-  const login = ({ email, password }) => setUser(SignIn({ email, password }));
+  const login = ({ email, password }) => {
+    localStorage.setItem('authenticated', authenticated);
+    setUser(SignIn({ email, password }))
+  };
   const logout = () => setUser(null);
 
   const renderDetail = getFiles.map((file) =>
@@ -68,8 +71,9 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Router>
-           {authenticated ? ( <LogoutButton logout={logout} />) : (null)}
+        <BrowserRouter>
+        {console.log(authenticated)}
+          {authenticated ? ( <LogoutButton logout={logout} />) : (null)}
           <Switch>
             <Route path='/' exact render={(props) => <Login authenticated={authenticated} login={login} />} ></Route>
             <AuthRoute authenticated={authenticated} path='/main' Component={Main2} />
@@ -78,7 +82,7 @@ function App() {
             {/* ver 1 - temp */}
             <Route path='/ver1' exact component={Main} />
           </Switch>
-        </Router>
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   );
