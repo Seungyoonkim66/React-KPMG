@@ -2,7 +2,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import "./styles/App.css";
-import Main from "./components/main/main";
+// import Main from "./components/main/main";  // design ver 1 
 import Main2 from "./components/main_ver2/main_ver2";
 import Files from './static/samplefile.json';
 import Detail from "./components/detail_ver2/detail_ver2";

@@ -1,14 +1,15 @@
 import axios from 'axios';
-import Files from '../../static/samplefile.json';
 
-export function FileDelete( { selected } ) {
+export function FileDelete({ selected }) {
     console.log(selected);
     const deletedFiles = [];
-    selected.map(id => {
+    selected.map((id) => {
         const settingData = { "id": id }
         console.log(settingData);
         deletedFiles.push(settingData);
-    })
+
+        return deletedFiles;
+    });
 
     console.log(deletedFiles);
 
@@ -18,18 +19,20 @@ export function FileDelete( { selected } ) {
     // formData.append("files", deletedFiles);
 
     axios.delete('http://.../files', formData)
-    .then((reponse) => console.log(reponse))
-    .catch((error) => console.log(error))
-    .then(() => console.log("send file delete request"));  
-}
-
-export function AnnotationDelete({selected}){
-    console.log(selected);
-    selected.map((field) => {
-        axios.delete(`http://.../annotation/${field}`)
         .then((reponse) => console.log(reponse))
         .catch((error) => console.log(error))
-        .then(() => console.log("send annotation delete request"));
+        .then(() => console.log("send file delete request"));
+}
+
+export function AnnotationDelete({ selected }) {
+    console.log(selected);
+    selected.map((field) => {
+        return (
+            axios.delete(`http://.../annotation/${field}`)
+                .then((reponse) => console.log(reponse))
+                .catch((error) => console.log(error))
+                .then(() => console.log("send annotation delete request"))
+        );
     })
-    
+
 }

@@ -76,9 +76,10 @@ export default function FileList() {
 
     const fileList = getFile.map((file) =>
        { const isItemSelected = isSelected(file.id);
-        return (<ListItem button>
+        return (
+        <ListItem button key={file.id}>
             <Checkbox onChange={handleChange} value={file.id} checked={isItemSelected}/>
-            <Link key={file.id} style={{ textDecoration: 'none', color: 'black' }} to={file.id}>
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={file.id}>
                 <ListItemText primary={file.name} />
             </Link>
         </ListItem>);}
