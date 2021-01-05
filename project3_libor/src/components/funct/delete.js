@@ -1,19 +1,21 @@
 import axios from 'axios';
+import Files from '../../static/samplefile.json';
 
 export function FileDelete( { selected } ) {
     console.log(selected);
     const deletedFiles = [];
     selected.map(id => {
-        const settingFile = {
-            "id": id
-        }
-        return deletedFiles.push(settingFile);
+        const settingData = { "id": id }
+        console.log(settingData);
+        deletedFiles.push(settingData);
     })
 
     console.log(deletedFiles);
-    const formData = new FormData();
-    formData.append("files", deletedFiles);
 
+    const formData = { "files": deletedFiles }
+    console.log(formData);
+    // const formData = new FormData();
+    // formData.append("files", deletedFiles);
 
     axios.delete('http://.../files', formData)
     .then((reponse) => console.log(reponse))

@@ -50,10 +50,7 @@ function App() {
   const [user, setUser] = React.useState(null);
   const authenticated = user != null;
 
-  const login = ({ email, password }) => {
-    localStorage.setItem('authenticated', authenticated);
-    setUser(SignIn({ email, password }))
-  };
+  const login = ({ email, password }) => { setUser(SignIn({ email, password }))};
   const logout = () => setUser(null);
 
   const renderDetail = getFiles.map((file) =>
@@ -80,9 +77,9 @@ function App() {
             {renderDetail}
             
             {/* ver 1 - temp */}
-            <Route path='/ver1' exact component={Main} />
+            {/* <Route path='/ver1' exact component={Main} /> */}
             {/* temp */}
-            <Route path='/temp' exact component={Main2}></Route>
+            {/* <Route path='/temp' exact component={Main2}></Route> */}
 
           </Switch>
         </BrowserRouter>

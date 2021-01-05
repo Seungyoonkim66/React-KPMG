@@ -46,14 +46,12 @@ export default function QAList({ fileId }) {
     const [selected, setSelected] = React.useState([]);
 
     const handleChecked = (e) => {
-
         if (e.target.checked === true) {
             setSelected(selected.concat(e.target.value));
         }
         else{
             setSelected(selected.filter(row => row !== e.target.value));
         }
-
     }
 
     const handleDelete = () => {
@@ -63,6 +61,8 @@ export default function QAList({ fileId }) {
     }
 
     const numSelected = selected.length;
+
+    const isSelected = (row) => selected.indexOf(row) !== -1;
 
     return (
         <div className={classes.root} id='qalist'>
@@ -95,12 +95,12 @@ export default function QAList({ fileId }) {
             <div className={classes.list}>
                 {
                     qalist.map((qa) => {
-
+                        const isItemSelected = isSelected(qa.id);
                         if (qa.fileID === fileId)
                             return (
                                 <FormControl key={qa.id}>
                                     <div style={{ marginBottom: '5%', display: 'flex', flexDirection: "row" }}>
-                                        <Checkbox onChange={handleChecked} value={qa.id} inputProps={{ 'aria-label': qa.id }} />
+                                        <Checkbox onChange={handleChecked} value={qa.id} checked={isItemSelected} />
                                         <TextField
                                             label={qa.resultKey}
                                             defaultValue={qa.resultValue}

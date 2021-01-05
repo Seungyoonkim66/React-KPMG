@@ -9,6 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { FileDelete } from  '.././funct/delete';
 
 // 서버 생기면 서버에서 GET 요청으로 받아오기 
 import Files from '../../static/samplefile.json';
@@ -33,12 +34,21 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '20px',
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
+        height: '7%',
+        lineHeight:'250%',
     },
     listTitleHighlight: {
         backgroundColor: 'rgba(255,255,255,0.85)',
         textAlign: 'left',
         paddingLeft: theme.spacing(2),
-        fontSize: '15px',
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        fontSize: '17px',
+        height: '7%',
+        lineHeight:'300%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     }
 }));
 
@@ -58,16 +68,20 @@ export default function FileList() {
     }
 
     const handleDelete = () => {
-        console.log("delete");
+        FileDelete({selected});
+        setSelected([]);
     }
 
+    const isSelected = (row) => selected.indexOf(row) !== -1;
+
     const fileList = getFile.map((file) =>
-        <ListItem button>
-            <Checkbox onChange={handleChange} value={file.id} />
+       { const isItemSelected = isSelected(file.id);
+        return (<ListItem button>
+            <Checkbox onChange={handleChange} value={file.id} checked={isItemSelected}/>
             <Link key={file.id} style={{ textDecoration: 'none', color: 'black' }} to={file.id}>
                 <ListItemText primary={file.name} />
             </Link>
-        </ListItem>
+        </ListItem>);}
     );
 
     return (
@@ -78,7 +92,7 @@ export default function FileList() {
                         {numSelected} selected
                         <Tooltip title="Delete"><IconButton aria-label="delete" onClick={handleDelete}><DeleteIcon /></IconButton></Tooltip>
                     </div>)
-                    : (<div className={classes.listTitle} id='filelist-title'> FILES</div>)
+                    : (<div className={classes.listTitle} id='filelist-title'>FILES</div>)
                 }
                 <List component="nav">{fileList}</List>
             </Box>
